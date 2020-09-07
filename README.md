@@ -1,5 +1,8 @@
 # Sierra Breeze Enhanced
 
+## Forked
+
+This fork is just mainly for my own small modifications.. 
 
 ## Overview
 
@@ -11,8 +14,8 @@ Sierra Breeze Enhanced started as a fork of Breeze Enhanced decoration. It has t
  * Option to make all button symbols to appear at unison on hovering (Note: it does not apply to symbol themes).
  * Titlebar style options: SBE own style of Line Separation between Titlebar and Window / Match Titlebar color to Window color / Hide Titlebar under certain circumstances (Never/Maximization/Any Maximization (including H/V)/Always) / Gradient Adjustments / Opacity Adjustments.
  * Specific Shadow settings for inactive windows
- 
- 
+
+
 ### Screenshot of SBE Sierra theme (or How it All started...)
 
 

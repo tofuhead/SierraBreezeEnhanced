@@ -262,23 +262,33 @@ namespace Breeze
     //________________________________________________________________
     QColor Decoration::outlineColor() const
     {
+        auto c( client().data() );
         if( !m_internalSettings->drawTitleBarSeparator() ) return QColor();
+        if( m_animation->state() == QAbstractAnimation::Running )
+        {
+            QColor color( c->palette().color( QPalette::Highlight ) );
+            color.setAlpha( color.alpha()*m_opacity );
+            return color;
+        } else if( c->isActive() ) return c->palette().color( QPalette::Highlight );
+        else return QColor();
 
-        QColor titleBarColor ( rawTitleBarColor() );
-
-        uint r = qRed(titleBarColor.rgb());
-        uint g = qGreen(titleBarColor.rgb());
-        uint b = qBlue(titleBarColor.rgb());
-
-        qreal colorConditional = 0.299 * static_cast<qreal>(r) + 0.587 * static_cast<qreal>(g) + 0.114 * static_cast<qreal>(b);
-
-        QColor outlineColor;
-        if ( colorConditional > 69 ) // 255 -186
-          outlineColor = titleBarColor.darker(140);
-        else
-          outlineColor = titleBarColor.lighter(140);
-
-        return outlineColor;
+        // if( !m_internalSettings->drawTitleBarSeparator() ) return QColor();
+        //
+        // QColor titleBarColor ( rawTitleBarColor() );
+        //
+        // uint r = qRed(titleBarColor.rgb());
+        // uint g = qGreen(titleBarColor.rgb());
+        // uint b = qBlue(titleBarColor.rgb());
+        //
+        // qreal colorConditional = 0.299 * static_cast<qreal>(r) + 0.587 * static_cast<qreal>(g) + 0.114 * static_cast<qreal>(b);
+        //
+        // QColor outlineColor;
+        // if ( colorConditional > 69 ) // 255 -186
+        //   outlineColor = titleBarColor.darker(140);
+        // else
+        //   outlineColor = titleBarColor.lighter(140);
+        //
+        // return outlineColor;
     }
 
     //________________________________________________________________
